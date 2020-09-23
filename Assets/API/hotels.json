@@ -1,0 +1,59 @@
+[
+    {
+        "id": 1,
+        "category_id": 2,
+        "name": "Clindon Villa",
+        "price": 199.00,
+        "location": {
+            "city": "kingston",
+            "country": "Jamaica"
+        },
+        "space": 2486,
+        "review": 4.4,
+        "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo.png",
+        "images": [
+            {
+                "id": 1,
+                "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo.png"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "category_id": 2,
+        "name": "Blue jungle Villa",
+        "price": 250.00,
+        "location": {
+            "city": "Panama city",
+            "country": "Panama"
+        },
+        "space": 2476,
+        "review": 3.1,
+        "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo_1.png",
+        "images": [
+            {
+                "id": 1,
+                "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo_1.png"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "category_id": 2,
+        "name": "Moon Palace Hotel",
+        "price": 132.00,
+        "location": {
+            "city": "New York",
+            "country": "USA"
+        },
+        "space": 1568,
+        "review": 4.8,
+        "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo_2.png",
+        "images": [
+            {
+                "id": 1,
+                "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo_2.png"
+            }
+        ]
+    }
+]

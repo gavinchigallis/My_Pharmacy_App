@@ -1,0 +1,33 @@
+{
+    "id": 3,
+    "category_id": 2,
+    "name": "Moon Palace Hotel",
+    "price": 132.00,
+    "location": {
+        "city": "New York",
+        "country": "USA"
+    },
+    "space": 1568,
+    "review": 4.8,
+    "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo_2.png",
+    "user": {
+        "id": 3,
+        "first_name": "Tim",
+        "last_name": "Cooks",
+        "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/profile_3.jpeg"
+    },
+    "images": [
+        {
+            "id": 1,
+            "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo.png"
+        },
+        {
+            "id": 2,
+            "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo_1.png"
+        },
+        {
+            "id": 2,
+            "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo_2.png"
+        }
+    ]
+}
