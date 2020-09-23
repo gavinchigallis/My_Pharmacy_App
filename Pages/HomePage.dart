@@ -52,8 +52,8 @@ class HomePage extends StatefulWidget {
 */
 class _HomePage extends State<HomePage> with WidgetsBindingObserver{
     /*[Attributes]*/
-    int _state_id = 0;
-    int mainDisplayState = 0;
+    int _state_id = 2;
+    int mainDisplayState = 2;
     Widget _view = Container();
     ThemeAttribute theme_attribute = ThemeAttribute();
     Utility utility = new Utility();
@@ -91,7 +91,7 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
     void initState(){
         WidgetsBinding.instance.addObserver(this);
 
-        this._getHotels();
+        //this._getHotels();
 
         super.initState();
     }
@@ -270,6 +270,7 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
 
         switch(this.mainDisplayState)
         {
+            //is loading
             case 0:
             {
                 return Container(
@@ -337,181 +338,96 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
                 break;
             }
 
+            //Empty State
             case 1:
             {
                 return Container();
                 break;
             }
 
+            //has data
             case 2:
             {
                 return Container(
                     width: deviceWidth,
                     height: deviceHeight,
-                    //color: Colors.blue,
-                    //child: SingleChildScrollView(
-                        child: Container(
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                    this._pageLoader(),
-                                    Container(
-                                        padding: EdgeInsets.only(left: 25.00, top: 10.00, right: 25.00, bottom: 5.00),
-                                        constraints: BoxConstraints(
-                                            maxHeight: 60,
-                                            minHeight: 60,
-                                        ),
-                                        child: TextField(
-                                            keyboardType: TextInputType.text,
-                                            style: new TextStyle(
-                                                fontSize: 24.0,
-                                                //height: 0.35,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold                  
-                                            ),
-                                            decoration: InputDecoration(
-                                                labelText: "e.g Villa",
-                                                border: UnderlineInputBorder(
-                                                    borderRadius: BorderRadius.circular(10.0),
-                                                ),
-                                                //icon: Icon(Icons.search, color: Colors.grey),
-                                                suffixIcon:  Icon(Icons.search, color: Colors.grey),
-                                                hasFloatingPlaceholder: true
-                                            ),
-                                            onSubmitted: (String value){
-                                                if(value!="")
-                                                {
-                                                    //Navigator.pushNamed(context, "/search/"+value);
-                                                }
-                                            },
-                                            onChanged: (String value) {
-                                                setState(() {
-                                                    //_passwordValue = value;
-                                                });
-                                            }
-                                        ),
+                    child: Container(
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                                Container(
+                                    width: deviceWidth,
+                                    height: deviceHeight * 0.20,
+                                    decoration: BoxDecoration(
+                                        color: theme_attribute.primaryColor,
+                                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
                                     ),
-                                    SizedBox(
-                                        height: 2,
-                                    ),
-                                    Row(
-                                        children: <Widget>[
+                                    child: Column(
+                                        children: [
                                             Container(
-                                                //color: Colors.red,
-                                                height: 50,
-                                                margin: EdgeInsets.only(left: 10, top: 0, right: 0, bottom: 0),
-                                                width: deviceWidth-100,
-                                                child: SingleChildScrollView(
-                                                    scrollDirection: Axis.horizontal,
-                                                    child: Row(
-                                                        children: this._selectedFilter.map((item) {
-                                                            return new Builder(
-                                                                builder: (BuildContext context) {
-                                                                    
-                                                                    return GestureDetector(
-                                                                        child: Container(
-                                                                            //color: Colors.green,
-                                                                            margin: EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
-                                                                            padding: EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
-                                                                            decoration: BoxDecoration(
-                                                                                border: Border.all(
-                                                                                    color: Colors.grey[600],
-                                                                                    width: 1.0,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.all(
-                                                                                    Radius.circular(5.0)
-                                                                                ),
-                                                                            ),
-                                                                            child: Text(item, style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16.0, color: Colors.black)),
-                                                                        ),
-                                                                        onTap: (){
-
-                                                                        }
-                                                                    );
+                                                color: Colors.transparent,
+                                                child: Row(
+                                                    children: [
+                                                        Container(
+                                                            color: Colors.transparent,
+                                                            padding: EdgeInsets.only(left: 25.00, top: 20.00, right: 25.00, bottom: 5.00),
+                                                            constraints: BoxConstraints(
+                                                                maxHeight: 70,
+                                                                minHeight: 70,
+                                                                maxWidth: deviceWidth * 0.8
+                                                            ),
+                                                            child: TextField(
+                                                                keyboardType: TextInputType.text,
+                                                                style: new TextStyle(
+                                                                    fontSize: 18.0,
+                                                                    //height: 0.35,
+                                                                    color: Colors.grey,
+                                                                    fontWeight: FontWeight.normal                  
+                                                                ),
+                                                                decoration: InputDecoration(
+                                                                    labelText: "Search",
+                                                                    border: OutlineInputBorder(
+                                                                        borderRadius: BorderRadius.circular(10.0),
+                                                                    ),
+                                                                    //icon: Icon(Icons.search, color: Colors.grey),
+                                                                    suffixIcon:  Icon(Icons.search, color: Colors.black),
+                                                                    hasFloatingPlaceholder: true,
+                                                                    filled: true,
+                                                                    fillColor: Colors.white
+                                                                ),
+                                                                onSubmitted: (String value){
+                                                                    if(value!="")
+                                                                    {
+                                                                        //Navigator.pushNamed(context, "/search/"+value);
+                                                                    }
                                                                 },
-                                                            );
-                                                        }).toList(),
-                                                    ),
+                                                                onChanged: (String value) {
+                                                                    setState(() {
+                                                                        //_passwordValue = value;
+                                                                    });
+                                                                }
+                                                            ),
+                                                        ),
+                                                        Container(
+                                                            color: Colors.red,
+                                                        )
+                                                    ],
                                                 ),
                                             ),
-                                            SizedBox(
-                                                width: 20,
-                                            ),
                                             Container(
-                                                child: Text("Filters", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0, color: Colors.black)),
+                                              
                                             )
                                         ],
                                     ),
-                                    Container(
-                                        //color: Colors.red,
-                                        height: deviceHeight-145,
-                                        child: SingleChildScrollView(
-                                            child: Column(
-                                                children: this._hotels.map((item) {
-                                                    return new Builder(
-                                                        builder: (BuildContext context) {
-                                                            Hotel hotel = new Hotel.fromJson(item);
-                                                            
-                                                            return GestureDetector(
-                                                                child: Hero(
-                                                                    tag: "hotel_"+hotel.id.toString(),
-                                                                    child: Container(
-                                                                        //color: Colors.green,
-                                                                        margin: EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
-                                                                        child: new HotelCardWidget.withData(hotel),
-                                                                    )
-                                                                ),
-                                                                onTap: (){
-                                                                    Navigator.push(
-                                                                        context,
-                                                                        MaterialPageRoute<bool>(
-                                                                            builder: (BuildContext context) => new HotelPage(hotel.id)
-                                                                        )
-                                                                    );
-                                                                }
-                                                            );
-                                                        },
-                                                    );
-                                                }).toList(),
-                                            ),
-                                        ),
-                                    ),
-                                    /*CarouselSlider(
-                                        height: deviceHeight - 250,
-                                        viewportFraction: 0.7,
-                                        initialPage: (this._animals.length/2).round(),
-                                        reverse: false,
-                                        enlargeCenterPage: true,
-                                        enableInfiniteScroll: false,
-                                        items: this._animals.map((animalItem) {
-
-                                            return new Builder(
-                                                builder: (BuildContext context) {
-                                                    Animal animal = new Animal.fromJson(animalItem);
-                                                    
-                                                    return GestureDetector(
-                                                        child: Container(
-                                                            margin: EdgeInsets.only(left: 10, right: 10),
-                                                            child: new AnimalTileWidget.withData(animal),
-                                                        ),
-                                                        onTap: (){
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute<bool>(
-                                                                    builder: (BuildContext context) => new PhotoPage(animal.id)
-                                                                )
-                                                            );
-                                                        }
-                                                    );
-                                                },
-                                            );
-                                        }).toList(),
-                                        onPageChanged: (index){},
-                                    ),*/
-                                ],
-                            ),
+                                ),
+                                Container(
+                                    color: Colors.transparent,
+                                    width: deviceWidth,
+                                    height: 100,
+                                )
+                            ],
                         ),
-                    //),
+                    ),
                 );
                 break;
             }

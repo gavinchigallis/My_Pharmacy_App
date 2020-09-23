@@ -6,10 +6,10 @@ import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 class Utility
 {
     //Attributes
-    final String _App_Name = 'Hotel Search App';
-    final String _App_Version = "1.1.0";
-    final String _App_Version_name = 'Hotel Search App';
-    final int _App_Build_Number = 3;
+    final String _App_Name = 'My Pharmacy App';
+    final String _App_Version = "1.0.0";
+    final String _App_Version_name = 'My Pharmacy App';
+    final int _App_Build_Number = 1;
     final String _App_URL = 'http://example.com/';
 	  final String _App_API_URL = 'http://example.com/API/';
     final String _App_STORAGE_URL = 'http://example.com/storage/app/public/';

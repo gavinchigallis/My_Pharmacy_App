@@ -19,29 +19,6 @@ class _App extends State<App> {
     String _user_email;
     ThemeAttribute theme_attribute = ThemeAttribute();
     Utility utility = Utility();
-    
-
-    void checkLoginStatus() async {
-        //Variables
-        //Navigator.pushReplacementNamed(context, '/home');
-        /*SharedPreferences prefs = await SharedPreferences.getInstance();
-        this._user_email = prefs.getString('user_email').toString();
-        
-        print('user_email:');
-        print(this._user_email);*/
-
-        Future<int>.delayed(Duration(seconds: 1)).then((value){
-            //if(this._user_email.toString() == 'null')
-            if(true)
-            {
-                Navigator.pushReplacementNamed(context, '/home');
-            }
-            else
-            {
-                Navigator.pushReplacementNamed(context, '/home');
-            }
-        });
-    }
 
 
     @override
@@ -106,4 +83,25 @@ class _App extends State<App> {
 
     /*[Method]*/
 
+    void checkLoginStatus() async {
+        //Variables
+        //Navigator.pushReplacementNamed(context, '/home');
+        /*SharedPreferences prefs = await SharedPreferences.getInstance();
+        this._user_email = prefs.getString('user_email').toString();
+        
+        print('user_email:');
+        print(this._user_email);*/
+
+        Future<int>.delayed(Duration(seconds: 1)).then((value){
+            //if(this._user_email.toString() == 'null')
+            if(true)
+            {
+                Navigator.pushReplacementNamed(context, '/home');
+            }
+            else
+            {
+                Navigator.pushReplacementNamed(context, '/home');
+            }
+        });
+    }
 }
