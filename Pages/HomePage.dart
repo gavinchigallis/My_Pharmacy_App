@@ -170,7 +170,7 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
                 this._view = SafeArea(
                     child: Scaffold(
                         key: _scaffoldKey,
-                        backgroundColor: Colors.grey[200],
+                        backgroundColor: Colors.white,
                             /*appBar: AppBar(
                                 title: Row(
                                     children: <Widget>[
@@ -351,7 +351,197 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
                 return Container(
                     width: deviceWidth,
                     height: deviceHeight,
-                    child: Container(
+                    child: DefaultTabController(
+                        length: 4,
+                        child: Container(
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                    Container(
+                                        width: deviceWidth,
+                                        height: 175,
+                                        decoration: BoxDecoration(
+                                            color: theme_attribute.primaryColor,
+                                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
+                                        ),
+                                        child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                                            children: [
+                                                Container(
+                                                    color: Colors.transparent,
+                                                    child: Row(
+                                                        children: [
+                                                            Container(
+                                                                color: Colors.transparent,
+                                                                padding: EdgeInsets.only(left: 25.00, top: 20.00, right: 25.00, bottom: 5.00),
+                                                                constraints: BoxConstraints(
+                                                                    maxHeight: 70,
+                                                                    minHeight: 70,
+                                                                    maxWidth: deviceWidth * 0.8
+                                                                ),
+                                                                child: TextField(
+                                                                    keyboardType: TextInputType.text,
+                                                                    style: new TextStyle(
+                                                                        fontSize: 18.0,
+                                                                        //height: 0.35,
+                                                                        color: Colors.grey,
+                                                                        fontWeight: FontWeight.normal                  
+                                                                    ),
+                                                                    decoration: InputDecoration(
+                                                                        labelText: "Search",
+                                                                        border: OutlineInputBorder(
+                                                                            borderRadius: BorderRadius.circular(10.0),
+                                                                        ),
+                                                                        //icon: Icon(Icons.search, color: Colors.grey),
+                                                                        suffixIcon:  Icon(Icons.search, color: Colors.black),
+                                                                        hasFloatingPlaceholder: true,
+                                                                        filled: true,
+                                                                        fillColor: Colors.white
+                                                                    ),
+                                                                    onSubmitted: (String value){
+                                                                        if(value!="")
+                                                                        {
+                                                                            //Navigator.pushNamed(context, "/search/"+value);
+                                                                        }
+                                                                    },
+                                                                    onChanged: (String value) {
+                                                                        setState(() {
+                                                                            //_passwordValue = value;
+                                                                        });
+                                                                    }
+                                                                ),
+                                                            ),
+                                                            Container(
+                                                                width: 40,
+                                                                height: 40,
+                                                                margin: EdgeInsets.only(top: 10),
+                                                                padding: EdgeInsets.all(5),
+                                                                decoration: BoxDecoration(
+                                                                    color: Color.fromARGB(255, 195, 246, 248), //#C3F6F8,
+                                                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                ),
+                                                                child: RotatedBox(
+                                                                    quarterTurns: 2,
+                                                                    child: Icon(
+                                                                        Icons.sort,
+                                                                        size: 30,
+                                                                    ),
+                                                                ),
+                                                            )
+                                                        ],
+                                                    ),
+                                                ),
+                                                Container(
+                                                    margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                                                    child: TabBar(
+                                                        indicatorColor: Colors.transparent,
+                                                        unselectedLabelColor: Colors.grey,
+                                                        tabs:
+                                                        [
+                                                            Tab(
+                                                                text: "Medicines",
+                                                                icon: Container(
+                                                                    width: 40,
+                                                                    height: 40,
+                                                                    padding: EdgeInsets.all(5),
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors.white,
+                                                                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                                                                    ),
+                                                                    child: Image.asset(
+                                                                        "lib/Projects/My_Pharmacy_App/Assets/Images/bandage_150x150.png",
+                                                                        width: 30,
+                                                                        height: 30,
+                                                                    ),
+                                                                ),
+                                                            ),
+                                                            Tab(
+                                                                text: "First Aid kit",
+                                                                icon: Container(
+                                                                    width: 40,
+                                                                    height: 40,
+                                                                    padding: EdgeInsets.all(5),
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors.white,
+                                                                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                                                                    ),
+                                                                    child: Image.asset(
+                                                                        "lib/Projects/My_Pharmacy_App/Assets/Images/kit_150x150.png",
+                                                                        width: 30,
+                                                                        height: 30,
+                                                                    ),
+                                                                ),
+                                                            ),
+                                                            Tab(
+                                                                text: "Find Doctor",
+                                                                icon: Container(
+                                                                    width: 40,
+                                                                    height: 40,
+                                                                    padding: EdgeInsets.all(5),
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors.white,
+                                                                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                                                                    ),
+                                                                    child: Image.asset(
+                                                                        "lib/Projects/My_Pharmacy_App/Assets/Images/doctor_150x150.png",
+                                                                        width: 30,
+                                                                        height: 30,
+                                                                    ),
+                                                                ),
+                                                            ),
+                                                            Tab(
+                                                                text: "Emergency",
+                                                                icon: Container(
+                                                                    width: 40,
+                                                                    height: 40,
+                                                                    padding: EdgeInsets.all(5),
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors.white,
+                                                                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                                                                    ),
+                                                                    child: Image.asset(
+                                                                        "lib/Projects/My_Pharmacy_App/Assets/Images/emergency_150x150.png",
+                                                                        width: 30,
+                                                                        height: 30,
+                                                                    ),
+                                                                ),
+                                                            ),
+                                                        ]
+
+                                                    ),
+                                                )
+                                            ],
+                                        ),
+                                    ),
+                                    Container(
+                                        color: Colors.transparent,
+                                        width: deviceWidth,
+                                        height: 100,
+                                        child: TabBarView(
+                                            children: [
+                                                new Container(
+                                                    color: Colors.transparent,
+                                                    child: Center(child: Text('Hi from School', style: TextStyle(color: Colors.white),),),
+                                                    ),
+                                                new Container(
+                                                  color: Colors.transparent,
+                                                  child: Center(child: Text('Hi from home', style: TextStyle(color: Colors.white),),),
+                                                ),   new Container(
+                                                  color: Colors.transparent,
+                                                  child: Center(child: Text('Hi from Church', style: TextStyle(color: Colors.white),),),
+                                                ),  new Container(
+                                                  color: Colors.transparent,
+                                                  child: Center(child: Text('Hi from Hospital', style: TextStyle(color: Colors.white),),),
+                                                ),
+                                            ]
+                                        )
+                                    )
+                                ]
+                            )
+                        )
+                    )
+                );
+                    /*child: Container(
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -427,8 +617,8 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
                                 )
                             ],
                         ),
-                    ),
-                );
+                    ),*/
+                //);
                 break;
             }
 

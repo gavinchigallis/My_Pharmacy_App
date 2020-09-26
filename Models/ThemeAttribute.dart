@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ThemeAttribute{
 
-    Color _primaryColor = Color.fromARGB(255, 172, 241, 255);
+    Color _primaryColor = Color.fromARGB(255, 172, 241, 255); //hex: #ACF1FF
     Color _secondaryColor = Colors.grey;
     TextStyle _textStyle_1 = TextStyle(
         color: Colors.black,
