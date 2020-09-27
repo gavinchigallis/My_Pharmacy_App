@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "category_id": 2,
+        "name": "Gummy Vitamin Pills",
+        "price": 14.50,
+        "like": 1,
+        "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo.png",
+        "images": [
+            {
+                "id": 1,
+                "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo.png"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "category_id": 2,
+        "name": "Sports Omega-3 Pills",
+        "price": 12.30,
+        "like": 0,
+        "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo.png",
+        "images": [
+            {
+                "id": 1,
+                "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo.png"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "category_id": 2,
+        "name": "Calcium Pills",
+        "price": 20.99,
+        "like": 0,
+        "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo.png",
+        "images": [
+            {
+                "id": 1,
+                "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/Hotel_Search_App/images/Photo.png"
+            }
+        ]
+    }
+]

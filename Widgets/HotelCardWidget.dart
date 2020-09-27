@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../Models/ThemeAttribute.dart';
 import '../Models/Utility.dart';
 import '../Models/Hotel.dart';
-import '../Services/HotelService.dart';
+import '../Services/ProductService.dart';
 
 class HotelCardWidget extends StatefulWidget {
   int _state_id=0;

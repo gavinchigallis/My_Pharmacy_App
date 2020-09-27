@@ -14,7 +14,7 @@ import '../Models/Utility.dart';
 import '../Models/Hotel.dart';
 //import '../Pages/PhotoPage.dart';
 import '../Widgets/HotelCardWidget.dart';
-import '../Services/HotelService.dart';
+import '../Services/ProductService.dart';
 
 
 
@@ -61,7 +61,7 @@ class _HotelPage extends State<HotelPage> with WidgetsBindingObserver{
     final _scaffoldKey = GlobalKey<ScaffoldState>();
     int id;
     bool _isPageLoading = false;
-    HotelService _hotelService = new HotelService();
+    ProductService _hotelService = new ProductService();
     Hotel _hotel;
     List _selectedFilter = ["House", "Price"];
 

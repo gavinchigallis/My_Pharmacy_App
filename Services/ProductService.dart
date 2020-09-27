@@ -9,14 +9,14 @@ import 'package:mock_web_server/mock_web_server.dart';
 
 import '../Models/Utility.dart';
 
-class HotelService{
+class ProductService{
     /*[Attributes]*/
     Utility utility = new Utility();
     MockWebServer _server;
     
 
     /*[Contsructors]*/
-    HotelService(){
+    ProductService(){
         _server = new MockWebServer();
         _server.start();
     }
@@ -25,15 +25,15 @@ class HotelService{
     /*[Methods]*/
 
     /*
-    * @Description: Get a listof all hotels from our database
+    * @Description: Get a list of items in the database
     *
     * @param:
     *
     * @return: JSON
     */
-    Future<dynamic> getHotels() async
+    Future<dynamic> getPills() async
     {
-        this.utility.Custom_Print("START: getHotels");
+        this.utility.Custom_Print("START: getPills");
         //Variables/
         BuildContext context;
         SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -44,19 +44,19 @@ class HotelService{
 
         //Mock API Service
         //Load the JSON file from the "Assets" folder
-        String jsonString = await rootBundle.loadString('lib/Projects/Hotel_Search_App/Assets/API/hotels.json');
+        String jsonString = await rootBundle.loadString('lib/Projects/My_Pharmacy_App/Assets/API/pills.json');
         Map<String, String> ServerHeaders = new Map();
         ServerHeaders["X-Server"] = "MockDart";
         _server.enqueue(body: jsonString, httpCode: 200, headers: ServerHeaders, delay: new Duration(milliseconds: 1000));
 
-        utility.Custom_Print(utility.App_API_URL + 'hotels');
+        utility.Custom_Print(utility.App_API_URL + 'pills');
         //utility.Custom_Print('formData: '+formData.toString());
 
 
         HttpClient client = new HttpClient();
         client.badCertificateCallback = ((X509Certificate cert, String host, int port) => true);
 
-        String url = utility.App_API_URL + 'hotels';
+        String url = utility.App_API_URL + 'pills';
 
         //HttpClientRequest request = await client.getUrl(Uri.parse(url));
         HttpClientRequest request = await client.get(_server.host, _server.port, url);
@@ -132,7 +132,7 @@ class HotelService{
             }
         }
 
-        utility.Custom_Print("STOP: getHotels");
+        utility.Custom_Print("STOP: getPills");
         return results;
     }
 

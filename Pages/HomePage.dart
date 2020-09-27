@@ -14,7 +14,7 @@ import '../Models/Utility.dart';
 import '../Models/Hotel.dart';
 import '../Pages/HotelPage.dart';
 import '../Widgets/HotelCardWidget.dart';
-import '../Services/HotelService.dart';
+import '../Services/ProductService.dart';
 
 
 
@@ -59,9 +59,8 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
     Utility utility = new Utility();
     final _scaffoldKey = GlobalKey<ScaffoldState>();
     bool _isPageLoading = false;
-    HotelService _hotelService = new HotelService();
-    List _hotels = [];
-    List _selectedFilter = ["House", "Price"];
+    ProductService _productService = new ProductService();
+    List _pills = [];
 
     /*[Constructors]*/
 
@@ -91,7 +90,7 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
     void initState(){
         WidgetsBinding.instance.addObserver(this);
 
-        //this._getHotels();
+        this._getPills();
 
         super.initState();
     }
@@ -516,13 +515,41 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
                                     Container(
                                         color: Colors.transparent,
                                         width: deviceWidth,
-                                        height: 100,
+                                        height: deviceHeight - 200,
                                         child: TabBarView(
                                             children: [
                                                 new Container(
-                                                    color: Colors.transparent,
-                                                    child: Center(child: Text('Hi from School', style: TextStyle(color: Colors.white),),),
+                                                    color: Colors.black,
+                                                    child: SingleChildScrollView(
+                                                        child: Column(
+                                                            children: this._pills.map((item) {
+                                                                return new Builder(
+                                                                    builder: (BuildContext context) {
+                                                                        //Hotel hotel = new Hotel.fromJson(item);
+                                                                        
+                                                                        return GestureDetector(
+                                                                            child: Container(
+                                                                                color: Colors.green,
+                                                                                margin: EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
+                                                                                padding: EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
+                                                                                child: new Text(item.toString()),
+                                                                                //child: new HotelCardWidget.withData(hotel),
+                                                                            ),
+                                                                            onTap: (){
+                                                                                /*Navigator.push(
+                                                                                    context,
+                                                                                    MaterialPageRoute<bool>(
+                                                                                        builder: (BuildContext context) => new HotelPage(hotel.id)
+                                                                                    )
+                                                                                );*/
+                                                                            }
+                                                                        );
+                                                                    },
+                                                                );
+                                                            }).toList(),
+                                                        ),
                                                     ),
+                                                ),
                                                 new Container(
                                                   color: Colors.transparent,
                                                   child: Center(child: Text('Hi from home', style: TextStyle(color: Colors.white),),),
@@ -672,8 +699,8 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
     *
     * @return: void
     */
-    Future<void> _getHotels() async {
-        this.utility.Custom_Print("START: _getHotels");
+    Future<void> _getPills() async {
+        this.utility.Custom_Print("START: _getPills");
         //Variables
 
         setState(() {
@@ -681,7 +708,7 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
         });
         
         
-        this._hotelService.getHotels()
+        this._productService.getPills()
         .then((value) {
             // Run extra code here
             utility.Custom_Print("Function Complete Successfully");
@@ -689,9 +716,9 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
 
             setState(() {
                 this._isPageLoading = false;
-                this._state_id = 2;
-                this.mainDisplayState = 2;
-                this._hotels = value;
+                //this._state_id = 2;
+                //this.mainDisplayState = 2;
+                this._pills = value;
             });
         },
         onError: (error) {
@@ -752,7 +779,7 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
             });
         });
 
-        this.utility.Custom_Print("STOP: _getHotels");
+        this.utility.Custom_Print("STOP: _getPills");
     }
 
 
