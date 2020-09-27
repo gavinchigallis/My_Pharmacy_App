@@ -11,9 +11,8 @@ import 'dart:math';
 
 import '../Models/ThemeAttribute.dart';
 import '../Models/Utility.dart';
-import '../Models/Hotel.dart';
-import '../Pages/HotelPage.dart';
-import '../Widgets/HotelCardWidget.dart';
+import '../Models/Product.dart';
+import '../Widgets/ProductCardWidget.dart';
 import '../Services/ProductService.dart';
 
 
@@ -519,21 +518,20 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
                                         child: TabBarView(
                                             children: [
                                                 new Container(
-                                                    color: Colors.black,
+                                                    color: Colors.transparent,
                                                     child: SingleChildScrollView(
                                                         child: Column(
                                                             children: this._pills.map((item) {
                                                                 return new Builder(
                                                                     builder: (BuildContext context) {
-                                                                        //Hotel hotel = new Hotel.fromJson(item);
+                                                                        Product product = new Product.fromJson(item);
                                                                         
                                                                         return GestureDetector(
                                                                             child: Container(
-                                                                                color: Colors.green,
-                                                                                margin: EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
-                                                                                padding: EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
-                                                                                child: new Text(item.toString()),
-                                                                                //child: new HotelCardWidget.withData(hotel),
+                                                                                //color: Colors.green,
+                                                                                margin: EdgeInsets.only(left: 5, top: 0, right: 5, bottom: 0),
+                                                                                padding: EdgeInsets.only(left: 5, top: 0, right: 5, bottom: 0),
+                                                                                child: new ProductCardWidget.withData(product),
                                                                             ),
                                                                             onTap: (){
                                                                                 /*Navigator.push(
@@ -568,84 +566,6 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
                         )
                     )
                 );
-                    /*child: Container(
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                                Container(
-                                    width: deviceWidth,
-                                    height: deviceHeight * 0.20,
-                                    decoration: BoxDecoration(
-                                        color: theme_attribute.primaryColor,
-                                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
-                                    ),
-                                    child: Column(
-                                        children: [
-                                            Container(
-                                                color: Colors.transparent,
-                                                child: Row(
-                                                    children: [
-                                                        Container(
-                                                            color: Colors.transparent,
-                                                            padding: EdgeInsets.only(left: 25.00, top: 20.00, right: 25.00, bottom: 5.00),
-                                                            constraints: BoxConstraints(
-                                                                maxHeight: 70,
-                                                                minHeight: 70,
-                                                                maxWidth: deviceWidth * 0.8
-                                                            ),
-                                                            child: TextField(
-                                                                keyboardType: TextInputType.text,
-                                                                style: new TextStyle(
-                                                                    fontSize: 18.0,
-                                                                    //height: 0.35,
-                                                                    color: Colors.grey,
-                                                                    fontWeight: FontWeight.normal                  
-                                                                ),
-                                                                decoration: InputDecoration(
-                                                                    labelText: "Search",
-                                                                    border: OutlineInputBorder(
-                                                                        borderRadius: BorderRadius.circular(10.0),
-                                                                    ),
-                                                                    //icon: Icon(Icons.search, color: Colors.grey),
-                                                                    suffixIcon:  Icon(Icons.search, color: Colors.black),
-                                                                    hasFloatingPlaceholder: true,
-                                                                    filled: true,
-                                                                    fillColor: Colors.white
-                                                                ),
-                                                                onSubmitted: (String value){
-                                                                    if(value!="")
-                                                                    {
-                                                                        //Navigator.pushNamed(context, "/search/"+value);
-                                                                    }
-                                                                },
-                                                                onChanged: (String value) {
-                                                                    setState(() {
-                                                                        //_passwordValue = value;
-                                                                    });
-                                                                }
-                                                            ),
-                                                        ),
-                                                        Container(
-                                                            color: Colors.red,
-                                                        )
-                                                    ],
-                                                ),
-                                            ),
-                                            Container(
-                                              
-                                            )
-                                        ],
-                                    ),
-                                ),
-                                Container(
-                                    color: Colors.transparent,
-                                    width: deviceWidth,
-                                    height: 100,
-                                )
-                            ],
-                        ),
-                    ),*/
-                //);
                 break;
             }
 
