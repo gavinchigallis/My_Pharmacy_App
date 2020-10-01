@@ -1,12 +1,12 @@
 [
     {
         "id": 1,
-        "category_id": 2,
+        "category_id": 1,
         "name": "Gummy Vitamin Pills",
         "price": 14.50,
         "like": true,
         "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/My_Pharmacy_App/images/pills_1.png",
+        "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/My_Pharmacy_App/images/pills_11.png",
         "images": [
             {
                 "id": 1,
@@ -16,7 +16,7 @@
     },
     {
         "id": 2,
-        "category_id": 2,
+        "category_id": 1,
         "name": "Sports Omega-3 Pills",
         "price": 12.30,
         "like": false,
@@ -31,7 +31,7 @@
     },
     {
         "id": 3,
-        "category_id": 2,
+        "category_id": 1,
         "name": "Calcium Pills",
         "price": 20.99,
         "like": false,

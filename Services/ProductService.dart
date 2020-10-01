@@ -138,15 +138,15 @@ class ProductService{
 
 
     /*
-    * @Description: Get a hotel by id from our database
+    * @Description: Get a list of items in the database
     *
     * @param:
     *
     * @return: JSON
     */
-    Future<dynamic> getHotelByID(int id) async
+    Future<dynamic> getFirstAids() async
     {
-        this.utility.Custom_Print("START: getHotelByID");
+        this.utility.Custom_Print("START: getFirstAids");
         //Variables/
         BuildContext context;
         SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -157,19 +157,19 @@ class ProductService{
 
         //Mock API Service
         //Load the JSON file from the "Assets" folder
-        String jsonString = await rootBundle.loadString('lib/Projects/Hotel_Search_App/Assets/API/hotel_'+id.toString()+'.json');
+        String jsonString = await rootBundle.loadString('lib/Projects/My_Pharmacy_App/Assets/API/first_aids.json');
         Map<String, String> ServerHeaders = new Map();
         ServerHeaders["X-Server"] = "MockDart";
-        _server.enqueue(body: jsonString, httpCode: 200, headers: ServerHeaders, delay: new Duration(milliseconds: 2000));
+        _server.enqueue(body: jsonString, httpCode: 200, headers: ServerHeaders, delay: new Duration(milliseconds: 1000));
 
-        utility.Custom_Print(utility.App_API_URL + 'hotel_'+id.toString());
+        utility.Custom_Print(utility.App_API_URL + 'first_aids');
         //utility.Custom_Print('formData: '+formData.toString());
 
 
         HttpClient client = new HttpClient();
         client.badCertificateCallback = ((X509Certificate cert, String host, int port) => true);
 
-        String url = utility.App_API_URL + 'hotel_'+id.toString();
+        String url = utility.App_API_URL + 'first_aids';
 
         //HttpClientRequest request = await client.getUrl(Uri.parse(url));
         HttpClientRequest request = await client.get(_server.host, _server.port, url);
@@ -245,7 +245,7 @@ class ProductService{
             }
         }
 
-        utility.Custom_Print("STOP: getHotelByID");
+        utility.Custom_Print("STOP: getFirstAids");
         return results;
     }
 

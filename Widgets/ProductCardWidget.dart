@@ -197,17 +197,24 @@ class _ProductCardWidget extends State<ProductCardWidget> {
                                         padding: EdgeInsets.all(10),
                                         child: Stack(
                                             children: [
-                                                Positioned(
-                                                    top: 5,
-                                                    right: 5,
-                                                    child: _likeIcon()
-                                                ),
                                                 Center(
                                                     child: Image.network(
                                                         this.widgetDataObject.image,
                                                         width: 120,
                                                         height: 120,
+                                                        errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace){
+                                                            return Image.asset(
+                                                                "lib/Projects/My_Pharmacy_App/Assets/Images/noimage.png",
+                                                                width: 120,
+                                                                height: 120
+                                                            );
+                                                        },
                                                     ),
+                                                ),
+                                                Positioned(
+                                                    top: 5,
+                                                    right: 5,
+                                                    child: _likeIcon()
                                                 )
                                             ],
                                         )
