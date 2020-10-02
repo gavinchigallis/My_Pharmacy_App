@@ -13,6 +13,7 @@ import '../Models/ThemeAttribute.dart';
 import '../Models/Utility.dart';
 import '../Models/Product.dart';
 import '../Widgets/ProductCardWidget.dart';
+import '../Widgets/DoctorCardWidget.dart';
 import '../Services/ProductService.dart';
 
 
@@ -61,6 +62,8 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
     ProductService _productService = new ProductService();
     List _pills = [];
     List _first_aids = [];
+    List _doctors = [];
+    List _emergencys = [];
 
     /*[Constructors]*/
 
@@ -92,6 +95,8 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
 
         this._getPills();
         this._getFirstAids();
+        this._getDoctors();
+        this._getEmergency();
 
         super.initState();
     }
@@ -473,7 +478,7 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
                                                                 ),
                                                             ),
                                                             Tab(
-                                                                text: "Find Doctor",
+                                                                text: "Doctor",
                                                                 icon: Container(
                                                                     width: 40,
                                                                     height: 40,
@@ -582,12 +587,66 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
                                                     ),
                                                 ),
                                                 new Container(
-                                                  color: Colors.transparent,
-                                                  child: Center(child: Text('Hi from Church', style: TextStyle(color: Colors.white),),),
+                                                    color: Colors.transparent,
+                                                    child: SingleChildScrollView(
+                                                        child: Column(
+                                                            children: this._doctors.map((item) {
+                                                                return new Builder(
+                                                                    builder: (BuildContext context) {
+                                                                        Product product = new Product.fromJson(item);
+                                                                        
+                                                                        return GestureDetector(
+                                                                            child: Container(
+                                                                                //color: Colors.green,
+                                                                                margin: EdgeInsets.only(left: 5, top: 0, right: 5, bottom: 0),
+                                                                                padding: EdgeInsets.only(left: 5, top: 0, right: 5, bottom: 0),
+                                                                                child: new DoctorCardWidget.withData(product),
+                                                                            ),
+                                                                            onTap: (){
+                                                                                /*Navigator.push(
+                                                                                    context,
+                                                                                    MaterialPageRoute<bool>(
+                                                                                        builder: (BuildContext context) => new HotelPage(hotel.id)
+                                                                                    )
+                                                                                );*/
+                                                                            }
+                                                                        );
+                                                                    },
+                                                                );
+                                                            }).toList(),
+                                                        ),
+                                                    ),
                                                 ),
                                                 new Container(
-                                                  color: Colors.transparent,
-                                                  child: Center(child: Text('Hi from Hospital', style: TextStyle(color: Colors.white),),),
+                                                    color: Colors.transparent,
+                                                    child: SingleChildScrollView(
+                                                        child: Column(
+                                                            children: this._emergencys.map((item) {
+                                                                return new Builder(
+                                                                    builder: (BuildContext context) {
+                                                                        Product product = new Product.fromJson(item);
+                                                                        
+                                                                        return GestureDetector(
+                                                                            child: Container(
+                                                                                //color: Colors.green,
+                                                                                margin: EdgeInsets.only(left: 5, top: 0, right: 5, bottom: 0),
+                                                                                padding: EdgeInsets.only(left: 5, top: 0, right: 5, bottom: 0),
+                                                                                child: new ProductCardWidget.withData(product),
+                                                                            ),
+                                                                            onTap: (){
+                                                                                /*Navigator.push(
+                                                                                    context,
+                                                                                    MaterialPageRoute<bool>(
+                                                                                        builder: (BuildContext context) => new HotelPage(hotel.id)
+                                                                                    )
+                                                                                );*/
+                                                                            }
+                                                                        );
+                                                                    },
+                                                                );
+                                                            }).toList(),
+                                                        ),
+                                                    ),
                                                 ),
                                             ]
                                         )
@@ -822,5 +881,187 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
         });
 
         this.utility.Custom_Print("STOP: _getFirstAids");
+    }
+
+
+    /*
+    * @Description: 
+    *
+    * @param:
+    *
+    * @return: void
+    */
+    Future<void> _getDoctors() async {
+        this.utility.Custom_Print("START: _getDoctors");
+        //Variables
+
+        setState(() {
+            this._isPageLoading = true;
+        });
+        
+        
+        this._productService.getDoctors()
+        .then((value) {
+            // Run extra code here
+            utility.Custom_Print("Function Complete Successfully");
+            utility.Custom_Print(value.toString());
+
+            setState(() {
+                this._isPageLoading = false;
+                //this._state_id = 2;
+                //this.mainDisplayState = 2;
+                this._doctors = value;
+            });
+        },
+        onError: (error) {
+            utility.Custom_Print("Future returned Error");
+            utility.Custom_Print(error.toString());
+            //Toast.show(error['message'], context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+
+            setState(() {
+                this._isPageLoading = false;
+            });
+
+            switch(error.runtimeType) { 
+
+                case SocketException: {
+
+                    SnackBar snackBar = SnackBar(
+                        content: Text("Could not login at this time"),
+                        action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {
+                                // Some code to undo the change.
+                            },
+                        ),
+                    );
+                    
+                    //_scaffoldKey.currentState.showSnackBar(snackBar);
+
+                    Toast.show("Could not login at this time", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+                    break;
+                }
+
+
+                default: {
+
+                    SnackBar snackBar =  SnackBar(
+                        content: Text(error['error']),
+                        action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {
+                                // Some code to undo the change.
+                            },
+                        ),
+                    );
+                    
+                    //_scaffoldKey.currentState.showSnackBar(snackBar);
+
+                    Toast.show(error['error'].toString(), context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+                }
+            }
+        })
+        .catchError((error){
+            utility.Custom_Print("Please try again later");
+            utility.Custom_Print(error.toString());
+            //Toast.show("Please try again later", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+
+            setState(() {
+                this._isPageLoading = false;
+            });
+        });
+
+        this.utility.Custom_Print("STOP: _getDoctors");
+    }
+
+
+    /*
+    * @Description: 
+    *
+    * @param:
+    *
+    * @return: void
+    */
+    Future<void> _getEmergency() async {
+        this.utility.Custom_Print("START: _getEmergency");
+        //Variables
+
+        setState(() {
+            this._isPageLoading = true;
+        });
+        
+        
+        this._productService.getEmergency()
+        .then((value) {
+            // Run extra code here
+            utility.Custom_Print("Function Complete Successfully");
+            utility.Custom_Print(value.toString());
+
+            setState(() {
+                this._isPageLoading = false;
+                //this._state_id = 2;
+                //this.mainDisplayState = 2;
+                this._emergencys = value;
+            });
+        },
+        onError: (error) {
+            utility.Custom_Print("Future returned Error");
+            utility.Custom_Print(error.toString());
+            //Toast.show(error['message'], context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+
+            setState(() {
+                this._isPageLoading = false;
+            });
+
+            switch(error.runtimeType) { 
+
+                case SocketException: {
+
+                    SnackBar snackBar = SnackBar(
+                        content: Text("Could not login at this time"),
+                        action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {
+                                // Some code to undo the change.
+                            },
+                        ),
+                    );
+                    
+                    //_scaffoldKey.currentState.showSnackBar(snackBar);
+
+                    Toast.show("Could not login at this time", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+                    break;
+                }
+
+
+                default: {
+
+                    SnackBar snackBar =  SnackBar(
+                        content: Text(error['error']),
+                        action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {
+                                // Some code to undo the change.
+                            },
+                        ),
+                    );
+                    
+                    //_scaffoldKey.currentState.showSnackBar(snackBar);
+
+                    Toast.show(error['error'].toString(), context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+                }
+            }
+        })
+        .catchError((error){
+            utility.Custom_Print("Please try again later");
+            utility.Custom_Print(error.toString());
+            //Toast.show("Please try again later", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+
+            setState(() {
+                this._isPageLoading = false;
+            });
+        });
+
+        this.utility.Custom_Print("STOP: _getEmergency");
     }
 }

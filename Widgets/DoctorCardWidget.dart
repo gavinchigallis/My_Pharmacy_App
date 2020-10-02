@@ -10,7 +10,7 @@ import '../Models/Utility.dart';
 import '../Models/Product.dart';
 import '../Services/ProductService.dart';
 
-class ProductCardWidget extends StatefulWidget {
+class DoctorCardWidget extends StatefulWidget {
   int _state_id=0;
   Product widgetDataObject;
 
@@ -21,7 +21,7 @@ class ProductCardWidget extends StatefulWidget {
   *
   * @return: void
   */
-  ProductCardWidget();
+  DoctorCardWidget();
 
   /*
   * @Description: Constructor
@@ -30,7 +30,7 @@ class ProductCardWidget extends StatefulWidget {
   *
   * @return: void
   */
-  ProductCardWidget.withData(Product productObject){
+  DoctorCardWidget.withData(Product productObject){
       this._state_id = 2;
       this.widgetDataObject = productObject;
   }
@@ -41,20 +41,20 @@ class ProductCardWidget extends StatefulWidget {
       {
             case 2:
             {
-                return _ProductCardWidget._withData(this._state_id, this.widgetDataObject);
+                return _DoctorCardWidget._withData(this._state_id, this.widgetDataObject);
                 break;
             }
 
             default:
             {
-                return _ProductCardWidget();
+                return _DoctorCardWidget();
                 break;
             }
       }
     }
 }
 
-class _ProductCardWidget extends State<ProductCardWidget> {
+class _DoctorCardWidget extends State<DoctorCardWidget> {
     /*[Attributes]*/
     int _state_id=0;
     Product widgetDataObject;
@@ -68,7 +68,7 @@ class _ProductCardWidget extends State<ProductCardWidget> {
     bool _isPageLoading = false;
 
 
-    _ProductCardWidget();
+    _DoctorCardWidget();
 
     /*
     * @Description: Constructor
@@ -77,7 +77,7 @@ class _ProductCardWidget extends State<ProductCardWidget> {
     *
     * @return: void
     */
-    _ProductCardWidget._withData(int state_id, Product productObject)
+    _DoctorCardWidget._withData(int state_id, Product productObject)
     {
         this._state_id = state_id;
         this.widgetDataObject = productObject;
@@ -150,6 +150,7 @@ class _ProductCardWidget extends State<ProductCardWidget> {
                                                     height: 20,
                                                 ),
                                                 Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                     children: [
                                                         SizedBox(
                                                             width: 10,
@@ -175,7 +176,7 @@ class _ProductCardWidget extends State<ProductCardWidget> {
                                                                     borderRadius: BorderRadius.circular(10.0),
                                                                 ),
                                                                 child: Icon(
-                                                                    Icons.add
+                                                                    Icons.calendar_today
                                                                 ),
                                                                 onPressed: (){
 

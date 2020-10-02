@@ -16,7 +16,7 @@ class Utility
     final String _Content_Type = "application/json";
     final _AllowDebugging = true;
     final _DebugWithIDOnly = false;
-    bool _Debug = true;
+    bool _Debug = false;
     int _Debug_Print_ID = 0;
 
     //Constructure
