@@ -22,11 +22,11 @@ import '../Services/ProductService.dart';
 * @Description:
 *
 */
-class ProductPage extends StatefulWidget {
+class DoctorPage extends StatefulWidget {
   /*[Attributes]*/
   int _product_id;
 
-  ProductPage(){
+  DoctorPage(){
 
   }
 
@@ -37,7 +37,7 @@ class ProductPage extends StatefulWidget {
   *
   * @return: void
   */
-  ProductPage.withData(int product_id){
+  DoctorPage.withData(int product_id){
       this._product_id=product_id;
   }
 
@@ -51,9 +51,9 @@ class ProductPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
       if(this._product_id==null){
-          return _ProductPage();
+          return _DoctorPage();
       }else{
-          return _ProductPage._withData(this._product_id);
+          return _DoctorPage._withData(this._product_id);
       }
   }
 }
@@ -65,7 +65,7 @@ class ProductPage extends StatefulWidget {
 *
 * @return: void
 */
-class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
+class _DoctorPage extends State<DoctorPage> with WidgetsBindingObserver{
     /*[Attributes]*/
     int _state_id = 0;
     int mainDisplayState = 0;
@@ -92,7 +92,7 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
     *
     * @return: void
     */
-    _ProductPage()
+    _DoctorPage()
     {
 
     }
@@ -104,7 +104,7 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
     *
     * @return: void
     */
-    _ProductPage._withData(int product_id)
+    _DoctorPage._withData(int product_id)
     {
         this._product_id = product_id;
     }
@@ -122,7 +122,7 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
     void initState(){
         WidgetsBinding.instance.addObserver(this);
 
-        this._getPill(this._product_id);
+        this._getDoctor(this._product_id);
 
         super.initState();
     }
@@ -498,7 +498,7 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
                                                 ],
                                             ),
                                         ),
-                                        Container(
+                                        /*Container(
                                             child: ButtonTheme(
                                                 //minWidth: deviceWidth - 50,
                                                 height: 30,
@@ -514,7 +514,7 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
                                                     },
                                                 ),
                                             ),
-                                        )
+                                        )*/
                                     ],
                                 ),
                             ),
@@ -524,7 +524,7 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
                             Container(
                                 width: deviceWidth,
                                 padding: EdgeInsets.only(left: 15),
-                                child: Text("About Product", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0, color: Colors.black)),
+                                child: Text("About Dr. "+this._product.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0, color: Colors.black)),
                             ),
                             SizedBox(
                                 height: 10,
@@ -547,9 +547,9 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
                                         shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(15.0),
                                         ),
-                                        child: Text("Add to Cart", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black)),
+                                        child: Text("Schedule appointment", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black)),
                                         onPressed: (){
-                                            Toast.show("Added item to cart", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+                                            Toast.show("Appointment Scheduled", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
                                         },
                                     ),
                                 ),
@@ -633,8 +633,8 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
     *
     * @return: void
     */
-    Future<void> _getPill(int product_id) async {
-        this.utility.Custom_Print("START: _getPill");
+    Future<void> _getDoctor(int product_id) async {
+        this.utility.Custom_Print("START: _getDoctor");
         //Variables
 
         setState(() {
@@ -642,7 +642,7 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
         });
         
         
-        this._productService.getPill(product_id)
+        this._productService.getDoctor(product_id)
         .then((value) {
             // Run extra code here
             utility.Custom_Print("Function Complete Successfully");
@@ -713,6 +713,6 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
             });
         });
 
-        this.utility.Custom_Print("STOP: _getPill");
+        this.utility.Custom_Print("STOP: _getDoctor");
     }
 }

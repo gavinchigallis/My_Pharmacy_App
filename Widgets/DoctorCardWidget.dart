@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../Models/ThemeAttribute.dart';
 import '../Models/Utility.dart';
 import '../Models/Product.dart';
+import '../Pages/DoctorPage.dart';
 import '../Services/ProductService.dart';
 
 class DoctorCardWidget extends StatefulWidget {
@@ -179,7 +180,12 @@ class _DoctorCardWidget extends State<DoctorCardWidget> {
                                                                     Icons.calendar_today
                                                                 ),
                                                                 onPressed: (){
-
+                                                                    Navigator.push(
+                                                                        context,
+                                                                        MaterialPageRoute<bool>(
+                                                                            builder: (BuildContext context) => DoctorPage.withData(this.widgetDataObject.id)
+                                                                        )
+                                                                    );
                                                                 },
                                                             ),
                                                         )

@@ -1,0 +1,15 @@
+{
+    "id": 3,
+    "category_id": 1,
+    "name": "John Oliver",
+    "price": 120.05,
+    "like": false,
+    "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/My_Pharmacy_App/images/doctor_3.png",
+    "images": [
+        {
+            "id": 1,
+            "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/My_Pharmacy_App/images/doctor_3.png"
+        }
+    ]
+}
