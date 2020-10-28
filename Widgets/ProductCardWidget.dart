@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../Models/ThemeAttribute.dart';
 import '../Models/Utility.dart';
 import '../Models/Product.dart';
+import '../Pages/ProductPage.dart';
 import '../Services/ProductService.dart';
 
 class ProductCardWidget extends StatefulWidget {
@@ -178,7 +179,12 @@ class _ProductCardWidget extends State<ProductCardWidget> {
                                                                     Icons.add
                                                                 ),
                                                                 onPressed: (){
-
+                                                                    Navigator.push(
+                                                                        context,
+                                                                        MaterialPageRoute<bool>(
+                                                                            builder: (BuildContext context) => ProductPage.withData(this.widgetDataObject.id)
+                                                                        )
+                                                                    );
                                                                 },
                                                             ),
                                                         )

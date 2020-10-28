@@ -1,0 +1,15 @@
+{
+    "id": 2,
+    "category_id": 1,
+    "name": "Sports Omega-3 Pills",
+    "price": 12.30,
+    "like": false,
+    "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/My_Pharmacy_App/images/pills_2.png",
+    "images": [
+        {
+            "id": 1,
+            "image": "http://dynamicevolution.technology/Apps/flutter_widgets/storage/app/public/app_assets/My_Pharmacy_App/images/pills_2.png"
+        }
+    ]
+}
