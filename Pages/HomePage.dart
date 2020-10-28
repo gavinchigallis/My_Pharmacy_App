@@ -991,7 +991,7 @@ class _HomePage extends State<HomePage> with WidgetsBindingObserver{
         });
         
         
-        this._productService.getEmergency()
+        this._productService.getEmergencies()
         .then((value) {
             // Run extra code here
             utility.Custom_Print("Function Complete Successfully");

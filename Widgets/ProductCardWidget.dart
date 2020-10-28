@@ -8,7 +8,10 @@ import 'package:provider/provider.dart';
 import '../Models/ThemeAttribute.dart';
 import '../Models/Utility.dart';
 import '../Models/Product.dart';
-import '../Pages/ProductPage.dart';
+import '../Pages/PillPage.dart';
+import '../Pages/FirstAidPage.dart';
+import '../Pages/DoctorPage.dart';
+import '../Pages/EmergencyPage.dart';
 import '../Services/ProductService.dart';
 
 class ProductCardWidget extends StatefulWidget {
@@ -179,12 +182,36 @@ class _ProductCardWidget extends State<ProductCardWidget> {
                                                                     Icons.add
                                                                 ),
                                                                 onPressed: (){
-                                                                    Navigator.push(
-                                                                        context,
-                                                                        MaterialPageRoute<bool>(
-                                                                            builder: (BuildContext context) => ProductPage.withData(this.widgetDataObject.id)
-                                                                        )
-                                                                    );
+                                                                    switch (this.widgetDataObject.category_id) {
+                                                                        case 1:
+                                                                             Navigator.push(
+                                                                                context,
+                                                                                MaterialPageRoute<bool>(
+                                                                                    builder: (BuildContext context) => PillPage.withData(this.widgetDataObject.id)
+                                                                                )
+                                                                            );
+                                                                            break;
+
+                                                                        case 2:
+                                                                             Navigator.push(
+                                                                                context,
+                                                                                MaterialPageRoute<bool>(
+                                                                                    builder: (BuildContext context) => FirstAidPage.withData(this.widgetDataObject.id)
+                                                                                )
+                                                                            );
+                                                                            break;
+
+                                                                        case 4:
+                                                                             Navigator.push(
+                                                                                context,
+                                                                                MaterialPageRoute<bool>(
+                                                                                    builder: (BuildContext context) => EmergencyPage.withData(this.widgetDataObject.id)
+                                                                                )
+                                                                            );
+                                                                            break;
+
+                                                                        default:
+                                                                    }
                                                                 },
                                                             ),
                                                         )

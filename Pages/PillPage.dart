@@ -22,11 +22,11 @@ import '../Services/ProductService.dart';
 * @Description:
 *
 */
-class ProductPage extends StatefulWidget {
+class PillPage extends StatefulWidget {
   /*[Attributes]*/
   int _product_id;
 
-  ProductPage(){
+  PillPage(){
 
   }
 
@@ -37,7 +37,7 @@ class ProductPage extends StatefulWidget {
   *
   * @return: void
   */
-  ProductPage.withData(int product_id){
+  PillPage.withData(int product_id){
       this._product_id=product_id;
   }
 
@@ -51,9 +51,9 @@ class ProductPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
       if(this._product_id==null){
-          return _ProductPage();
+          return _PillPage();
       }else{
-          return _ProductPage._withData(this._product_id);
+          return _PillPage._withData(this._product_id);
       }
   }
 }
@@ -65,7 +65,7 @@ class ProductPage extends StatefulWidget {
 *
 * @return: void
 */
-class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
+class _PillPage extends State<PillPage> with WidgetsBindingObserver{
     /*[Attributes]*/
     int _state_id = 0;
     int mainDisplayState = 0;
@@ -92,7 +92,7 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
     *
     * @return: void
     */
-    _ProductPage()
+    _PillPage()
     {
 
     }
@@ -104,7 +104,7 @@ class _ProductPage extends State<ProductPage> with WidgetsBindingObserver{
     *
     * @return: void
     */
-    _ProductPage._withData(int product_id)
+    _PillPage._withData(int product_id)
     {
         this._product_id = product_id;
     }
